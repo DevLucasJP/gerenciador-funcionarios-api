@@ -1,5 +1,8 @@
 const app = require("./src/app")
+require("dotenv").config();
 
-app.listen(3000, () => {
-    console.log("Servidor conectado.")
+const port = process.env.PORT;
+
+app.listen(port, () => {
+    console.log(`Servidor conectado. http://localhost:${port}`)
 })
