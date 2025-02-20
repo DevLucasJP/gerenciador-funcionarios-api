@@ -3,6 +3,6 @@ const createUserController = require("../controllers/createUser")
 
 const router = Router();
 
-router.get("/", createUserController);
+router.post("/", createUserController);
 
 module.exports = router;
