@@ -15,7 +15,11 @@ const createUserController = (req, res) => {
         return res.status(400).json({mensagem:"Não foi possível confirmar a senha"})
     }
 
-    const user = createUserService();
+    const user = createUserService({
+        nome:data.nome,
+        email:data.email,
+        senha:data.senha
+    });
     res.status(201).json(user);
 }
 
