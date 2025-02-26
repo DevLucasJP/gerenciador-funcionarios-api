@@ -14,6 +14,10 @@ class UserMongoRepository {
 
         return user;
     }
+
+    static async findAll () {
+        return await this.userModel.find();
+    }
 }
 
 module.exports = UserMongoRepository
