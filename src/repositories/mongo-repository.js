@@ -15,6 +15,12 @@ class UserMongoRepository {
         return user;
     }
 
+    static async exists (data) {
+        const verifyUser = await this.userModel.exists({email: data});
+
+        return !!verifyUser
+    }
+
     static async findAll () {
         return await this.userModel.find();
     }
