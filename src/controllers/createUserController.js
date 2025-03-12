@@ -4,7 +4,7 @@ const createUserController = async (req, res) => {
     try {
         const data = req.body;
 
-        const camposObrigatorios = ["nome", "email", "senha", "confirmarSenha"];
+        const camposObrigatorios = ["nome", "email", "senha", "role","confirmarSenha"];
         for (const campo of camposObrigatorios) {
             if (!data[campo]) {
                 return res.status(400).json({ mensagem: `Campo ${campo} não foi preenchido` });
@@ -18,8 +18,10 @@ const createUserController = async (req, res) => {
         const user = await createUserService({
             nome: data.nome,
             email: data.email,
-            senha: data.senha
+            senha: data.senha,
+            role: data.role
         });
+
         res.status(201).json(user);
     } catch (error) {
         console.error(error);

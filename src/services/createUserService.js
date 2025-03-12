@@ -18,7 +18,8 @@ const createUserService = async (user) => {
     const newUser = new User({
         nome: user.nome,
         email: user.email,
-        senha: hashPassword
+        senha: hashPassword,
+        role: user.role
     });
 
     return await userRepository.create(newUser);

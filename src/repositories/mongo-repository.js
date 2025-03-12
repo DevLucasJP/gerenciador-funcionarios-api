@@ -7,7 +7,8 @@ class UserMongoRepository {
         const userData = {
             nome: data.nome,
             email: data.email,
-            senha: data.senha
+            senha: data.senha,
+            role: data.role
         };
 
         const user = await this.userModel.create(userData);
