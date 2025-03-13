@@ -25,6 +25,22 @@ class UserMongoRepository {
     static async findAll () {
         return await this.userModel.find();
     }
+
+    static async findById (id) {
+        const user = await this.userModel.findOne({_id: id}).lean();
+        delete user._id;
+
+        return user;
+    }
+
+    static async update (id, data) {
+        return await this.userModel.findOneAndUpdate(
+            {_id: id},
+            {
+                $set: data
+            }
+        );
+    }
 }
 
 module.exports = UserMongoRepository

@@ -22,6 +22,8 @@ const createUserService = async (user) => {
         role: user.role
     });
 
+    console.log(newUser);
+
     return await userRepository.create(newUser);
 }
 
