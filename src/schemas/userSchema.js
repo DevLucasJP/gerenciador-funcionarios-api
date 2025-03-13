@@ -18,6 +18,10 @@ const user = new Schema({
         enum: ["admin", "operador"],
         required: true
     },
+    isActive: {
+        type: Boolean,
+        default: true
+    },
     createdAt: {
         type: Date,
         default: Date.now
