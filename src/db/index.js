@@ -1,7 +1,8 @@
-const { default: mongoose } = require("mongoose");
+import mongoose from "mongoose"
 
 function dbConncetion () {
-    mongoose.connect(process.env.DB_HOST);
+    console.log(process.env.DB_HOST);
+    mongoose.connect("mongodb://localhost:27017");
 
     const db = mongoose.connection;
 
@@ -12,4 +13,4 @@ function dbConncetion () {
     db.on("error", console.error.bind(console, "erro de conexão"))
 }
 
-module.exports = dbConncetion;
+export default dbConncetion;

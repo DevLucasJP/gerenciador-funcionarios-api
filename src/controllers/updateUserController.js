@@ -1,4 +1,4 @@
-const updateUserService = require("../services/updateUserService")
+import updateUserService from "../services/updateUserService.js"
 
 const updateUserController = async (req, res) => {
     try {
@@ -19,4 +19,4 @@ const updateUserController = async (req, res) => {
     }
 }
 
-module.exports = updateUserController;
+export default updateUserController

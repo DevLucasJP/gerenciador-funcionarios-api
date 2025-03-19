@@ -1,4 +1,4 @@
-const UserMongoRepository = require("../repositories/mongo-repository")
+import UserMongoRepository from "../repositories/mongo-repository.js"
 
 const userMongoRepository = UserMongoRepository;
 
@@ -12,4 +12,4 @@ const findAllUsersService = async () => {
     return users;
 }
 
-module.exports = findAllUsersService;
+export default findAllUsersService

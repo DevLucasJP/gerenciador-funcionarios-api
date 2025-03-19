@@ -1,4 +1,4 @@
-const userRolesEnum = require("../helpers/enums/userRoles")
+import userRolesEnum from "../helpers/enums/userRoles.js"
 
 class User {
     constructor ({nome, email, senha, role, isActive, createdAt}) {
@@ -31,4 +31,4 @@ class User {
     }
 }
 
-module.exports = User;
+export default User

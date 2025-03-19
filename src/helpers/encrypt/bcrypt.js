@@ -1,4 +1,4 @@
-const bcrypt = require("bcrypt");
+import bcrypt from "bcrypt"
 
 class Encrypter {
     static async hash (value) {
@@ -8,4 +8,4 @@ class Encrypter {
     }
 }
 
-module.exports = Encrypter;
+export default Encrypter

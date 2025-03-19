@@ -1,4 +1,5 @@
-const userSchema = require("../schemas/userSchema");
+import userSchema from "../schemas/userSchema.js"
+import {Types} from "mongoose"
 
 class UserMongoRepository {
     static userModel = userSchema;
@@ -41,6 +42,14 @@ class UserMongoRepository {
             }
         );
     }
+
+    static async remove () {
+        return await this.userModel.deleteMany({});
+    }
+
+    static async removeOne (userId) {
+        return await this.userModel.deleteOne({_id:userId});
+    }
 }
 
-module.exports = UserMongoRepository
+export default UserMongoRepository

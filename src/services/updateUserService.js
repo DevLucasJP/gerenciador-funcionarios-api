@@ -1,5 +1,5 @@
-const User = require("../entities/User");
-const UserMongoRepository = require("../repositories/mongo-repository");
+import User from "../entities/User.js";
+import UserMongoRepository from "../repositories/mongo-repository.js";
 
 const userRepository = UserMongoRepository;
 
@@ -16,4 +16,4 @@ const updateUserService = async (id, data) => {
     return await userRepository.update(id, user);
 }
 
-module.exports = updateUserService;
+export default updateUserService;

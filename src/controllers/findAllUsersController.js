@@ -1,4 +1,4 @@
-const findAllUsersService = require("../services/findAllUsersService");
+import findAllUsersService from "../services/findAllUsersService.js"
 
 const findAllUsersController = async (req, res) => {
     try {
@@ -15,4 +15,4 @@ const findAllUsersController = async (req, res) => {
     }
 }
 
-module.exports = findAllUsersController;
+export default findAllUsersController

@@ -3,4 +3,4 @@ const userRoles = {
     OPERATOR: "operador"
 }
 
-module.exports = userRoles;
+export default userRoles

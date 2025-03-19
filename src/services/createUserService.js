@@ -1,6 +1,6 @@
-const User = require("../entities/User");
-const encrypter = require("../helpers/encrypt/bcrypt");
-const UserMongoRepository = require("../repositories/mongo-repository");
+import User from "../entities/User.js"
+import encrypter from "../helpers/encrypt/bcrypt.js"
+import UserMongoRepository from "../repositories/mongo-repository.js"
 
 const userRepository = UserMongoRepository;
 
@@ -27,4 +27,4 @@ const createUserService = async (user) => {
     return await userRepository.create(newUser);
 }
 
-module.exports = createUserService;
+export default createUserService
