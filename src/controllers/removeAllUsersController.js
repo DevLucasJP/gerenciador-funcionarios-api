@@ -1,8 +1,8 @@
-import removeUsersServices from "../services/removeUsersService.js";
+import removeAllUsersServices from "../services/removeAllUsersService.js";
 
 const removeUsersController = async (req, res) => {
     try {
-        const deletedUsers = await removeUsersServices();
+        const deletedUsers = await removeAllUsersServices();
         res.status(204).json({
             data: deletedUsers,
             message: "Usuários removidos com sucesso"

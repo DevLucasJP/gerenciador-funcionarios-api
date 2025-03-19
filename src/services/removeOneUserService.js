@@ -2,7 +2,7 @@ import UserMongoRepository from "../repositories/mongo-repository.js";
 
 const userRepository = UserMongoRepository;
 
-const removeUserService = async (userId) => {
+const removeOneUserService = async (userId) => {
     const userData = await userRepository.findById(userId);
 
     if (!userData) {
@@ -12,4 +12,4 @@ const removeUserService = async (userId) => {
     return await userRepository.removeOne(userId);
 }
 
-export default removeUserService
+export default removeOneUserService
