@@ -1,0 +1,13 @@
+POST http://localhost:3000
+Content-Type: "application/json"
+
+{
+    "nome": "fdgdgfdfg",
+    "email": "ggggggg@gmail.com",
+    "senha": "zgfdgdf",
+    "role": "admin",
+    "confirmarSenha": "zgfdgdf"
+}
+
+###
+GET http://localhost:3000/users
