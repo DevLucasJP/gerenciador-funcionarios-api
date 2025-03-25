@@ -13,4 +13,13 @@ Content-Type: application/json
 GET http://localhost:3000/users
 
 ###
-GET http://localhost:3000/user/67e198515fd22e60ffcf7fbb
+GET http://localhost:3000/user/67e198515fd22e60ffcf7faa
+
+###
+POST http://localhost:3000/auth
+Content-Type: application/json
+
+{
+    "email": "ggggggg@gmail.com",
+    "senha": "zgfdgdf"
+}

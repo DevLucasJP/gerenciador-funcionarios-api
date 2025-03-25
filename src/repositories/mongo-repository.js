@@ -38,6 +38,17 @@ class UserMongoRepository {
         return user;
     }
 
+    static async findByEmail(email) {
+        const user = await this.userModel.findOne({ email }).lean();
+
+        if (!user) {
+            return false;
+        }
+
+        delete user._id;
+        return user;
+    }
+
     static async update(id, data) {
         return await this.userModel.findOneAndUpdate(
             { _id: id },

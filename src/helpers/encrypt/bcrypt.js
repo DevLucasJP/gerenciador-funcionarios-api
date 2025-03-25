@@ -6,6 +6,10 @@ class Encrypter {
 
         return genHash;
     }
+
+    static async comparePassword (senha, senhaBb) {
+        return await bcrypt.compare(senha, senhaBb);
+    }
 }
 
 export default Encrypter
