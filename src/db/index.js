@@ -1,8 +1,7 @@
 import mongoose from "mongoose"
 
 function dbConncetion () {
-    console.log(process.env.DB_HOST);
-    mongoose.connect("mongodb://localhost:27017");
+    mongoose.connect(process.env.DB_HOST);
 
     const db = mongoose.connection;
 

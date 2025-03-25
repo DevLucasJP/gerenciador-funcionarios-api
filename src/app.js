@@ -1,3 +1,5 @@
+import {config} from "dotenv";
+config();
 import express from "express";
 import router from "./routers/index.js";
 import dbConncetion from "./db/index.js";

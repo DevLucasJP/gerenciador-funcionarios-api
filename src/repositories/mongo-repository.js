@@ -1,10 +1,10 @@
 import userSchema from "../schemas/userSchema.js"
-import {Types} from "mongoose"
+import { Types } from "mongoose"
 
 class UserMongoRepository {
     static userModel = userSchema;
 
-    static async create (data) {
+    static async create(data) {
         const userData = {
             nome: data.nome,
             email: data.email,
@@ -17,38 +17,42 @@ class UserMongoRepository {
         return user;
     }
 
-    static async exists (data) {
-        const verifyUser = await this.userModel.exists({email: data});
+    static async exists(data) {
+        const verifyUser = await this.userModel.exists({ email: data });
 
         return !!verifyUser
     }
 
-    static async findAll () {
+    static async findAll() {
         return await this.userModel.find();
     }
 
-    static async findById (id) {
-        const user = await this.userModel.findOne({_id: id}).lean();
-        delete user._id;
+    static async findById(id) {
+        const user = await this.userModel.findOne({ _id: id }).lean();
 
+        if (!user) {
+            return false;
+        }
+
+        delete user._id;
         return user;
     }
 
-    static async update (id, data) {
+    static async update(id, data) {
         return await this.userModel.findOneAndUpdate(
-            {_id: id},
+            { _id: id },
             {
                 $set: data
             }
         );
     }
 
-    static async remove () {
+    static async remove() {
         return await this.userModel.deleteMany({});
     }
 
-    static async removeOne (userId) {
-        return await this.userModel.deleteOne({_id:userId});
+    static async removeOne(userId) {
+        return await this.userModel.deleteOne({ _id: userId });
     }
 }
 
