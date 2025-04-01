@@ -34,8 +34,10 @@ class UserMongoRepository {
             return false;
         }
 
-        delete user._id;
-        return user;
+        const userWithoutId = Object.assign({}, user, { id: user._id });
+
+        delete userWithoutId._id;
+        return userWithoutId;
     }
 
     static async findByEmail(email) {
@@ -45,8 +47,10 @@ class UserMongoRepository {
             return false;
         }
 
-        delete user._id;
-        return user;
+        const userWithoutId = Object.assign({}, user, { id: user._id });
+
+        delete userWithoutId._id;
+        return userWithoutId;
     }
 
     static async update(id, data) {

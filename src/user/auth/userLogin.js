@@ -34,6 +34,7 @@ const loginController = async (req, res) => {
         const secret = process.env.SECRET_KEY;
         const token = jwt.sign(
             {
+                id: user.id,
                 nome: user.nome,
                 email: user.email,
                 isActive: user.isActive,
