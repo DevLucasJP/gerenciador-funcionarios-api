@@ -1,8 +1,5 @@
-import Encrypter from "../../helpers/encrypt/bcrypt.js";
-import UserMongoRepository from "../../repositories/mongo-repository.js";
-import jwt from "jsonwebtoken";
-
-const userRepository = UserMongoRepository;
+import createToken from "./helpers/createToken.js";
+import userLoginService from "./services/userLoginService.js";
 
 const loginController = async (req, res) => {
     try {
@@ -16,31 +13,9 @@ const loginController = async (req, res) => {
             }
         }
 
-        const user = await userRepository.findByEmail(email);
-        if (!user) {
-            return res.status(401).json({ message: "Acesso negado" })
-        }
+        const user = await userLoginService(email, senha);
 
-        const comparePassword = await Encrypter.comparePassword(senha, user.senha);
-        if (!comparePassword) {
-            return res.status(401).json({ message: "Senha inválida" });
-        }
-
-        const isActive = user.isActive;
-        if (!isActive) {
-            return res.status(400).json({ message: "Usuário inativo" })
-        }
-
-        const secret = process.env.SECRET_KEY;
-        const token = jwt.sign(
-            {
-                id: user.id,
-                nome: user.nome,
-                email: user.email,
-                isActive: user.isActive,
-                role: user.role
-            }, secret
-        )
+        const token = createToken(user);
 
         return res.status(200).json({
             user,
@@ -49,6 +24,10 @@ const loginController = async (req, res) => {
         });
     } catch (error) {
         console.error(error);
+
+        if (error.message === "Email ou senha incorretos") {
+            return res.status(401).json({ message: "Dados incorretos" })
+        }
         return res.status(500).json({ message: "internal server error" });
     }
 }
