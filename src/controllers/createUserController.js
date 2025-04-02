@@ -1,14 +1,15 @@
 import createUserService from "../services/createUserService.js"
+import validate from "../helpers/validate.js"
 
 const createUserController = async (req, res) => {
     try {
         const data = req.body;
+        const requiredFields = ["nome", "email", "senha", "role", "confirmarSenha"];
 
-        const camposObrigatorios = ["nome", "email", "senha", "role","confirmarSenha"];
-        for (const campo of camposObrigatorios) {
-            if (!data[campo]) {
-                return res.status(400).json({ mensagem: `Campo ${campo} não foi preenchido` });
-            }
+        const error = validate(requiredFields, data);
+
+        if (error) {
+            return res.status(400).json({ mensagem: `Campo ${error} não foi preenchido` })
         }
 
         if (data.senha !== data.confirmarSenha) {

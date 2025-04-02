@@ -1,3 +1,4 @@
+import validate from "../../helpers/validate.js";
 import createToken from "./helpers/createToken.js";
 import userLoginService from "./services/userLoginService.js";
 
@@ -7,11 +8,17 @@ const loginController = async (req, res) => {
 
         const requiredFields = ["email", "senha"];
 
-        for (const field of requiredFields) {
-            if (!req.body[field]) {
-                return res.status(422).json({ mensagem: `Campo ${field} não foi preenchido` });
-            }
+        const error = validate(requiredFields, req.body);
+
+        if (error) {
+            return res.status(400).json({ mensagem: `Campo ${error} não foi preenchido` })
         }
+
+        //for (const field of requiredFields) {
+        //    if (!req.body[field]) {
+        //        return res.status(422).json({ mensagem: `Campo ${field} não foi preenchido` });
+        //    }
+        //}
 
         const user = await userLoginService(email, senha);
 
