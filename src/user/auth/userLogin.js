@@ -11,14 +11,8 @@ const loginController = async (req, res) => {
         const error = validate(requiredFields, req.body);
 
         if (error) {
-            return res.status(400).json({ mensagem: `Campo ${error} não foi preenchido` })
+            return res.status(422).json({ mensagem: `Campo ${error} não foi preenchido` })
         }
-
-        //for (const field of requiredFields) {
-        //    if (!req.body[field]) {
-        //        return res.status(422).json({ mensagem: `Campo ${field} não foi preenchido` });
-        //    }
-        //}
 
         const user = await userLoginService(email, senha);
 

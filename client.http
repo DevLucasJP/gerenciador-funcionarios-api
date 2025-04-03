@@ -3,7 +3,7 @@ Content-Type: application/json
 
 {
     "nome": "fdgdgfdfg",
-    "email": "ggggggg@gmail.com",
+    "email": "",
     "senha": "zgfdgdf",
     "role": "admin",
     "confirmarSenha": "zgfdgdf"
@@ -23,3 +23,7 @@ Content-Type: application/json
     "email": "ggggggg@gmail.com",
     "senha": "zgfdgdf"
 }
+
+###
+DELETE http://localhost:3000/remove
+Authorization: Bearer token

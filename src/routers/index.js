@@ -6,6 +6,7 @@ import updateUserController from "../controllers/updateUserController.js"
 import removeAllUsersController from "../controllers/removeAllUsersController.js"
 import removeOneUserController from "../controllers/removeOneUserController.js"
 import loginController from "../user/auth/userLogin.js";
+import authMiddleware from "../middlewares/authMiddleware.js";
 
 
 const router = Router();
@@ -15,7 +16,7 @@ router.post("/auth", loginController);
 router.get("/users", findAllUsersController);
 router.get("/user/:id", findOneUserController);
 router.patch("/update/:id", updateUserController);
-router.delete("/remove", removeAllUsersController);
+router.delete("/remove", authMiddleware, removeAllUsersController);
 router.delete("/remove/:id", removeOneUserController);
 
 export default router
